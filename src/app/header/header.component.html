@@ -1,0 +1,13 @@
+<a href="index.html"><img class="logo" src="assets/earphones.png"></a>
+<div class="user-logins">
+  <ng-container *ngFor="let utente of utenti, let pos = index">
+    <p *ngIf="utenteSel < 0 || utenteSel === pos"
+       [class]="{selected: (utenteSel === pos)}"
+       (click)="seleziona($event,pos)">
+      {{utente}}
+    </p>
+  </ng-container>
+  <p *ngIf="utenteSel >= 0"
+     (click)="seleziona($event,-1)">Log out</p>
+</div>
+

@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PresentationComponent } from './presentation/presentation.component';
+import { SecodNavComponent } from './secod-nav/secod-nav.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    PresentationComponent
+    PresentationComponent,
+    SecodNavComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
