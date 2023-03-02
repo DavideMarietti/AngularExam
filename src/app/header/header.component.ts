@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +7,10 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-  utenti: string[];
-  utenteSel: number = -1;
+  @Input() utenti!: string[];
+  @Input() loggedUser!: string;
+  @Output() login: EventEmitter<string> = new EventEmitter<string>();
 
-  seleziona(e: MouseEvent, s: number){
-    this.utenteSel = s;
-  }
   constructor() {
-    this.utenti = ['Alice','Matteo','Celia'];
   }
 }

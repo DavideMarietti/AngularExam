@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HeaderComponent,
     PresentationComponent,
     SecodNavComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,

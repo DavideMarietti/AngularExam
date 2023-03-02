@@ -1,9 +1,22 @@
-<app-header></app-header>
+<app-header
+  [utenti]="calcolaNomiUtenti()"
+  [loggedUser]="currentUser"
+  (login)='logUser($event)'>
+</app-header>
 
-<app-presentation></app-presentation>
+<app-presentation *ngIf="currentUser.length === 0"></app-presentation>
 
-<app-secod-nav></app-secod-nav>
+<ng-container *ngIf="currentUser.length > 0">
 
-<app-user-profile></app-user-profile>
+  <app-secod-nav [view] = 'currentView'
+  (viewChange)="currentView = $event"></app-secod-nav>
+
+  <app-collection *ngIf="currentView === 'collection'"></app-collection>
+
+  <app-user-profile *ngIf="currentView === 'profile'"
+    [user]='datiUtenti[currentUser]'>
+  </app-user-profile>
+
+</ng-container>
 
 <app-footer></app-footer>
