@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {AppStateService} from "../app-state.service";
 import {UserInfoI} from "../data/utenti";
 
 @Component({
@@ -8,8 +9,9 @@ import {UserInfoI} from "../data/utenti";
 })
 
 export class UserProfileComponent {
-  @Input() user!: UserInfoI;
+  user: UserInfoI | null;
 
-  constructor() {
+  constructor(private appServ: AppStateService) {
+    this.user = appServ.userInfo(appServ.currentUser)
   }
 }

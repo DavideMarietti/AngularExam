@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
+import {AppStateService} from "./app-state.service";
 
 @Component({
   selector: 'app-root',
@@ -8,24 +8,20 @@ import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
 })
 
 export class AppComponent {
-  datiUtenti: { [username: string]: UserInfoI };
-  currentUser: string;
 
-  currentView: string;
+  utenti!: string[];
+  loggedUser!: string;
+  currentView!: string;
 
-  constructor() {
-    this.datiUtenti = infoUtenti;
-    this.currentUser = "";
-    this.currentView= "profile";
-  }
-
-  calcolaNomiUtenti() {
-    return Object.keys(this.datiUtenti);
-  }
-
-  logUser(nome: string){
-    if (this.datiUtenti.hasOwnProperty(nome))
-      this.currentUser = nome;
-    else this.currentUser= '';
+  constructor(private appServ: AppStateService) {
+    this.utenti = appServ.utenti;
+    this.loggedUser = appServ.currentUser;
+    this.currentView = appServ.currentView;
+    appServ.observe("login", (utente) =>{
+      this.loggedUser = utente;
+    })
+    appServ.observe("view", (view) =>{
+      this.currentView = view;
+    })
   }
 }

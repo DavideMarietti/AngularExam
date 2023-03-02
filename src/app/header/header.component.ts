@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component} from '@angular/core';
+import {AppStateService} from "../app-state.service";
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 
 export class HeaderComponent {
-  @Input() utenti!: string[];
-  @Input() loggedUser!: string;
-  @Output() login: EventEmitter<string> = new EventEmitter<string>();
+  utenti!: string[];
+  loggedUser!: string;
 
-  constructor() {
+  constructor(public appServ: AppStateService) {
+    this.utenti = appServ.utenti;
+    this.loggedUser = appServ.currentUser;
+    this.appServ.observe("login", (utente: string) => {
+      this.loggedUser = utente;
+    })
   }
 }

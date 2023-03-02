@@ -1,6 +1,6 @@
-<p (click)="viewChange.emit('collection')"
-   [class]="{selected: (view === 'collection')}">
+<p (click)="appServ.currentView = 'collection'"
+   [class]="{selected: (currentView === 'collection')}">
   Collezione</p>
-<p (click)="viewChange.emit('profile')"
-   [class]="{selected: (view === 'profile')}">
+<p (click)="appServ.currentView = 'profile'"
+   [class]="{selected: (currentView === 'profile')}">
   Profilo</p>

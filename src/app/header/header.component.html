@@ -3,11 +3,11 @@
   <ng-container *ngFor="let utente of utenti">
     <p *ngIf="loggedUser.length === 0 || loggedUser === utente"
        [class]="{selected: (loggedUser === utente)}"
-       (click)="login.emit(utente)">
+       (click)="appServ.login(utente)">
       {{utente}}
     </p>
   </ng-container>
-  <p *ngIf="loggedUser.length >= 0"
-     (click)="login.emit('')">Log out</p>
+  <p *ngIf="loggedUser.length > 0"
+     (click)="appServ.logout()">Log out</p>
 </div>
 
